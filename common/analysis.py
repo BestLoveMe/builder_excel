@@ -61,30 +61,32 @@ class CulParse(object):
 
 if __name__ == '__main__':
 
-    row = """curl 'https://api.huobandev.com/paas/hbdata/item/item_list' \
+    row = """curl 'https://api.huobandev.com/paasapi/dashboard/2400000000483091/get_widget_value' \
   -H 'Accept: application/json, text/plain, */*' \
   -H 'Accept-Language: zh-CN,zh;q=0.9' \
-  -H 'Authorization: Bearer HAvBxMy1NlrjKi74rBi9bEafilrPDmCp7qXKGsgg001' \
+  -H 'Authorization: Bearer LdGwot7GDw7qufu0T0ULSqp1zSnCrO0ZOQkyjr77001' \
   -H 'Cache-Control: no-cache' \
   -H 'Connection: keep-alive' \
-  -H 'Content-Type: application/json' \
-  -H 'Cookie: hb_dev_host=test08; sensorsdata2015jssdkcross=%7B%22distinct_id%22%3A%221370215%22%2C%22first_id%22%3A%22181db9d481f98d-09e60382fc231e-1f343371-2304000-181db9d4820766%22%2C%22props%22%3A%7B%22%24latest_traffic_source_type%22%3A%22%E7%9B%B4%E6%8E%A5%E6%B5%81%E9%87%8F%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC_%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80%22%2C%22%24latest_referrer%22%3A%22%22%7D%2C%22%24device_id%22%3A%22181db9d481f98d-09e60382fc231e-1f343371-2304000-181db9d4820766%22%2C%22identities%22%3A%22eyIkaWRlbnRpdHlfY29va2llX2lkIjoiMTgxZGI5ZDliOWVlMzEtMDM1YThjNTM2ZmUxYThjLTFmMzQzMzcxLTIzMDQwMDAtMTgxZGI5ZDliOWYxMWY4IiwiJGlkZW50aXR5X2xvZ2luX2lkIjoiMTM3MDIxNSJ9%22%2C%22history_login_id%22%3A%7B%22name%22%3A%22%24identity_login_id%22%2C%22value%22%3A%221370215%22%7D%7D' \
-  -H 'Origin: https://app-08.huobandev.com' \
+  -H 'Content-Type: application/json;charset=UTF-8' \
+  -H 'Cookie: hb_dev_host=test05; access_token=8syynUH1t8PQmqhUWLHRHkxsYa63Olgx1MxBtY1I012; user_id=1376905; sensorsdata2015jssdkcross=%7B%22distinct_id%22%3A%221369928%22%2C%22first_id%22%3A%2218381f97f20b41-077a6a9d2e908a4-26021a51-2304000-18381f97f21d22%22%2C%22props%22%3A%7B%22%24latest_traffic_source_type%22%3A%22%E7%9B%B4%E6%8E%A5%E6%B5%81%E9%87%8F%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC_%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80%22%2C%22%24latest_referrer%22%3A%22%22%7D%2C%22identities%22%3A%22eyIkaWRlbnRpdHlfbG9naW5faWQiOiIxMzY5OTI4IiwiJGlkZW50aXR5X2Nvb2tpZV9pZCI6IjE4MzgxZjk3ZjIwYjQxLTA3N2E2YTlkMmU5MDhhNC0yNjAyMWE1MS0yMzA0MDAwLTE4MzgxZjk3ZjIxZDIyIn0%3D%22%2C%22history_login_id%22%3A%7B%22name%22%3A%22%24identity_login_id%22%2C%22value%22%3A%221369928%22%7D%2C%22%24device_id%22%3A%2218381f97f20b41-077a6a9d2e908a4-26021a51-2304000-18381f97f21d22%22%7D' \
+  -H 'Origin: https://app-03.huobandev.com' \
   -H 'Pragma: no-cache' \
-  -H 'Referer: https://app-08.huobandev.com/' \
+  -H 'Referer: https://app-03.huobandev.com/' \
   -H 'Sec-Fetch-Dest: empty' \
   -H 'Sec-Fetch-Mode: cors' \
   -H 'Sec-Fetch-Site: same-site' \
-  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.60 Safari/537.36' \
-  -H 'sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="100", "Google Chrome";v="100"' \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36' \
+  -H 'X-Huoban-Request-Id: a8e0ab3aa866bbc81683e58eb0fb3fa0' \
+  -H 'X-Huoban-Security-Token: ' \
+  -H 'sec-ch-ua: ".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"' \
   -H 'sec-ch-ua-mobile: ?0' \
   -H 'sec-ch-ua-platform: "Windows"' \
-  --data-raw '{"offset":0,"limit":100,"permission_id":0,"filter":{},"search":{},"order_by":[{"sort":"desc","field":2200000137800892},{"sort":"asc","field":2200000137800894}],"search_connector":"","mode":"Service","table_id":2100000014305475}' \
+  --data-raw '{"widgets":[{"widget_id":2500000001849765,"ext_filter":1,"filter":{"and":[]}}]}' \
   --compressed"""
     parse = CulParse(row)
     # parse.culParse(row)
 
-    print(parse.getUrl())
+    # print(parse.getUrl())
     print(parse.getHeader())
-    print(parse.getMethod())
-    print(parse.getData())
+    # print(parse.getMethod())
+    # print(parse.getData())
