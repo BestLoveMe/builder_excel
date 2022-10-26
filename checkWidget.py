@@ -34,21 +34,32 @@ if local == 'dev':
 
 
 class Widget:
+    """
+    构建widget 图表组件类，保存相应的仪表盘和 图表信息
+    """
     def __init__(self, dashboard_id, dashboard_name, widget_id, widget_name):
         self.dashboard_id = dashboard_id
         self.dashboard_name = dashboard_name
         self.widget_id = widget_id
         self.widget_name = widget_name
     def get_widget_url(self):
+        """返回 请求图表的 URL"""
         return widget_url.format(self.dashboard_id)
 
     def get_widget_data(self):
+        """返回 请求图表接口时 使用的参数"""
         return {"widgets":[{"widget_id":self.widget_id}]}
 
     def get_dashboard_url(self):
+        """返回仪表盘 请求 图表组件的 api"""
         return dashboard_url.format(self.dashboard_id)
 
 def request_dashboard(space_id):
+    """
+    返回工作区下的所有 仪表盘
+    :param space_id: 工作区ID
+    :return:
+    """
     dashboard_list=[]
     try:
         res = requests.get(url=space_dashboard_url.format(space_id), headers=header, proxies=proxies).json()
@@ -57,6 +68,7 @@ def request_dashboard(space_id):
         print(e)
     else:
         for da in res:
+            """遍历 工作区下的所有 仪表盘，区分是否是分组，在分组中的，将分组中的也提取出来"""
             if da.get("type") == 'dashboard':
                 dashboard_list.append(da)
             elif da.get('type') == "dashboard_group":
@@ -65,7 +77,7 @@ def request_dashboard(space_id):
     return dashboard_list
 
 def request_widget_list(dashboard_list):
-
+    """遍历所有仪表盘请求 widget图表，组合成 widget 对象列表返回"""
     widgets_class_list = []
     for da in dashboard_list:
         dashboard_id = da.get('dashboard_id')
@@ -77,6 +89,7 @@ def request_widget_list(dashboard_list):
         else:
             widgets_list = dashboard_res.get('widgets')
             for wi in widgets_list:
+                # 过滤掉 筛选、流程-我处理的，快捷方式，流程-我发起的，
                 if wi.get('type') not in ['filter','task','multi_shortcuts','process','single_shortcut']:
                     widgets_class_list.append(Widget(dashboard_id, dashboard_name,wi.get("widget_id"), wi.get("name")))
 
@@ -84,6 +97,8 @@ def request_widget_list(dashboard_list):
 
 
 def check_data(widgets_class_list):
+    """遍历 widget对象列表，请求两个分支的返回值，并进行比较，返回值不一致的 写入 txt文件中"""
+
     with open(r'./widgets_class_list.pkl', 'rb') as f:
         # pickle.dump(widgets_class_list, f)
 
