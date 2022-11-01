@@ -1,5 +1,6 @@
 import abc
 import datetime
+import config
 
 from common.SendRequest import sendRequest
 
@@ -79,7 +80,7 @@ class BaseField(object):
     def getRange(self, field_id):
         # 获取table
         if not BaseField.range:
-            url = "https://api.huoban.com/paas/hbdata/field/filter/range"
+            url = config.after_base_url + "/paas/hbdata/field/filter/range"
             data = {"table_id":str(self.table_id)}
             try:
                 BaseField.range = sendRequest.sendRequest('post', url=url, data=data)
@@ -194,7 +195,7 @@ class BaseRelationField(BaseField):
 
     def getValue(self):
         if not self.__relation_items:
-            url = 'https://api.huoban.com/paas/hbdata/item/batch_item_title'
+            url = config.after_base_url+'/paas/hbdata/item/batch_item_title'
             data = {"list":[{"table_id":"{}".format(self.table_id),"item_ids":[self.field_id]}]}
             try:
                 self.__relation_items = sendRequest.sendRequest('post', url=url, data=data).get('data').get('list').get(int(self.field_id))
@@ -206,10 +207,11 @@ class BaseRelationField(BaseField):
     def _get_relation_item_list(self):
         # 获取当前关联字段的可选择的前 50条 item
         if not BaseRelationField.__item_list:
-            url = 'https://api.huoban.com/paasapi/item/field/{}/search_relation'.format(self.field_id)
+            url = config.after_base_url+'/paasapi/item/field/{}/search_relation'.format(self.field_id)
             data = {"text":"","offset":0,"limit":50,"table_id":self.table_id,"related_fields":{},"recommend_filter":{}}
             try:
                 relation_json = sendRequest.sendRequest('post', url=url,  data=data)
+                print(relation_json)
                 BaseRelationField.__item_list = relation_json
             except Exception as e:
                 pass
@@ -234,7 +236,7 @@ class BaseUserField(BaseField):
     def _get_user_list(self):
         """返回 用户字段 请求的 sear_user 列表"""
         if not BaseUserField.__user_dict.get(self.field_id):
-            url = 'https://api.huoban.com/paas/hbdata/field/{}/search_user'.format(self.field_id)
+            url = config.after_base_url + '/paas/hbdata/field/{}/search_user'.format(self.field_id)
             data = {"text":"","offset":0,"limit":50,"table_id":self.table_id}
             user_list = None
             try:

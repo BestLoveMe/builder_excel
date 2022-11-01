@@ -11,11 +11,11 @@ proxies = {
     "https":"127.0.0.1:9393"
 }
 
-local = 'dev'
+local = 'pre'
 
 
 space_dashboard_url = "https://api.huoban.com/v2/dashboard_group/space/{}/resource"
-header = {'authority': 'api.huoban.com', 'accept': 'application/json', 'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6', 'authorization': 'Bearer 3VCbYtqMUL5AfFmoXgtm2kXd9L7bGBvL8r0NkTgN001', 'cache-control': 'no-cache', 'cookie': 'visit_token=1666086009737; HUOBAN_SESSIONID=e80eb9f02024607a4469b9e2125103ff; access_token=3VCbYtqMUL5AfFmoXgtm2kXd9L7bGBvL8r0NkTgN001; user_id=3232861; HUOBAN_SESSIONID_BETA=3ee34a6e11bad53da5fe44f5eb9096bf; HUOBAN_AUTH_BETA=fd14fc9d550f020ce6e2d9e2d1121e54; HUOBAN_DATA_BETA=M3Gl48Puw6UVAhsc2EkL5b9WaepwnCgsoeIofBPDj7i5wNqUq5S57qW96C4bo4zRHMqjOUHumwviR8hVmPCo1Q%3D%3D; Hm_lvt_29e645b6615539290daae517d6a073c9=1666501049,1666580133,1666662114,1666748943; sensorsdata2015jssdkcross=%7B%22distinct_id%22%3A%223232861%22%2C%22first_id%22%3A%22183ea76f3fd4b5-03e6277897244fa-72422f2d-2304000-183ea76f3fe12e2%22%2C%22props%22%3A%7B%22%24latest_traffic_source_type%22%3A%22%E7%9B%B4%E6%8E%A5%E6%B5%81%E9%87%8F%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC_%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80%22%2C%22%24latest_referrer%22%3A%22%22%2C%22%24latest_utm_source%22%3A%22evoke_help%22%2C%22%24latest_utm_medium%22%3A%22embed%22%7D%2C%22identities%22%3A%22eyIkaWRlbnRpdHlfY29va2llX2lkIjoiMTgzZWE3NmYzZmQ0YjUtMDNlNjI3Nzg5NzI0NGZhLTcyNDIyZjJkLTIzMDQwMDAtMTgzZWE3NmYzZmUxMmUyIiwiJGlkZW50aXR5X2xvZ2luX2lkIjoiMzIzMjg2MSJ9%22%2C%22history_login_id%22%3A%7B%22name%22%3A%22%24identity_login_id%22%2C%22value%22%3A%223232861%22%7D%2C%22%24device_id%22%3A%22183ea76f3fd4b5-03e6277897244fa-72422f2d-2304000-183ea76f3fe12e2%22%7D; Hm_lpvt_29e645b6615539290daae517d6a073c9=1666759883; HUOBAN_AUTH=e5a9d3d30d4beb48a308dcbce02847da; HUOBAN_DATA=3iXZLW6Uz1STNtRI3maSDbc%2BnHj5FxoiDzNNBoR%2BTPfJmV%2BCfqPrjL4pGqrbOYNpB8nrLuyRlOv3g00tMtH2Tg%3D%3D', 'origin': 'https://app.huoban.com', 'pragma': 'no-cache', 'referer': 'https://app.huoban.com/', 'sec-ch-ua': '"Chromium";v="104", " Not A;Brand";v="99", "Microsoft Edge";v="104"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"Windows"', 'sec-fetch-dest': 'empty', 'sec-fetch-mode': 'cors', 'sec-fetch-site': 'same-site', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.55 Safari/537.36 Edg/96.0.1054.43', 'x-huoban-monitor-tag': 'dashboard_list', 'x-huoban-return-fields': '["dashboard_id", "name", "rights", "ref_type", "ref_id", "last_sync_on", "alias"]', 'x-huoban-security-token': '', 'x-huoban-sensors': '%7B%22visit_type%22%3A%22%E5%86%85%E9%83%A8%E7%B3%BB%E7%BB%9F%22%2C%22client_id%22%3A%221%22%2C%22platform_type%22%3A%22Web%E6%B5%8F%E8%A7%88%E5%99%A8%22%2C%22client_version%22%3A%22v4%22%2C%22is_register%22%3Atrue%2C%22env%22%3A%22prod%22%2C%22_distinct_id%22%3A%223232861%22%2C%22application_url%22%3A%22https%3A%2F%2Fapp.huoban.com%2Fspaces%2F11065%2Fdashboards%22%2C%22company_id%22%3A%2254%22%2C%22space_id%22%3A%2211065%22%7D'}
+header = {'authority': 'api.huoban.com', 'accept': 'application/json', 'accept-language': 'zh-CN,zh;q=0.9', 'authorization': 'Bearer 8O5B4Pjl9FwsGISuawHWkImuN6uEyK6AXrhd6mgq001', 'cache-control': 'no-cache', 'content-type': 'application/json', 'cookie': 'visit_token=1663924904144; HUOBAN_SESSIONID=676bdd1b75be0d1e02cb5a8f96512266; HUOBAN_SESSIONID_BETA=9f3ad75c0e9e4e9571a28feebcb6d831; user_id=4360620; access_token=8O5B4Pjl9FwsGISuawHWkImuN6uEyK6AXrhd6mgq001; sensorsdata2015jssdkcross=%7B%22distinct_id%22%3A%222640551%22%2C%22first_id%22%3A%2218369a71ebb42c-07085b9586c70a8-26021a51-2304000-18369a71ebc1038%22%2C%22props%22%3A%7B%22%24latest_utm_source%22%3A%22evoke_help%22%2C%22%24latest_utm_medium%22%3A%22embed%22%2C%22%24latest_traffic_source_type%22%3A%22%E7%9B%B4%E6%8E%A5%E6%B5%81%E9%87%8F%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC_%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80%22%2C%22%24latest_referrer%22%3A%22%22%7D%2C%22identities%22%3A%22eyIkaWRlbnRpdHlfY29va2llX2lkIjoiMTgzNjlhNzFlYmI0MmMtMDcwODViOTU4NmM3MGE4LTI2MDIxYTUxLTIzMDQwMDAtMTgzNjlhNzFlYmMxMDM4IiwiJGlkZW50aXR5X2xvZ2luX2lkIjoiMjY0MDU1MSJ9%22%2C%22history_login_id%22%3A%7B%22name%22%3A%22%24identity_login_id%22%2C%22value%22%3A%222640551%22%7D%2C%22%24device_id%22%3A%2218369a71ebb42c-07085b9586c70a8-26021a51-2304000-18369a71ebc1038%22%7D; HUOBAN_AUTH_BETA=7148fce3bf2e5347dd1d564e2294308f; HUOBAN_DATA_BETA=PgYU%2BglyORaYRYIp3BTy5RiqL90dSprxrp8xvsyj6LL3P36TtRhJMyDh5FDx4BIvid6el2htsHbeDfCOmYf5GA%3D%3D; Hm_lvt_29e645b6615539290daae517d6a073c9=1666924615,1666939608,1667212371,1667268182; Hm_lpvt_29e645b6615539290daae517d6a073c9=1667268182; HUOBAN_AUTH=58b58528402770768c661bbe6e908796; HUOBAN_DATA=M9SzKQBLMG0JP7Eo6htlDGXvZldTpY2VqSvWB8NeFB0lzuw7EDlhHVaxy%2FYJu6TgEonx2w5kd4z8KJmZ6sF4UsvrEFw8tKeqbmlr9K3Y%2B0OiXmoE1XY5umCUT5MlyeQDPd1VgLNO1wzStPt6u4euxBWVMpuabRjfm4QmLZQS%2F%2BQ%3D', 'origin': 'https://app.huoban.com', 'pragma': 'no-cache', 'referer': 'https://app.huoban.com/', 'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"Windows"', 'sec-fetch-dest': 'empty', 'sec-fetch-mode': 'cors', 'sec-fetch-site': 'same-site', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36', 'x-huoban-monitor-tag': 'dashboard_update', 'x-huoban-security-token': '', 'x-huoban-sensors': '%7B%22visit_type%22%3A%22%E5%86%85%E9%83%A8%E7%B3%BB%E7%BB%9F%22%2C%22client_id%22%3A%221%22%2C%22platform_type%22%3A%22Web%E6%B5%8F%E8%A7%88%E5%99%A8%22%2C%22client_version%22%3A%22v4%22%2C%22is_register%22%3Atrue%2C%22env%22%3A%22prod%22%2C%22_distinct_id%22%3A%222640551%22%2C%22application_url%22%3A%22https%3A%2F%2Fapp.huoban.com%2Fspaces%2F4000000003433456%2Fdashboards%2F2400000001069234%22%2C%22company_id%22%3A%225100000000001643%22%2C%22space_id%22%3A%224000000003433456%22%7D'}
 
 dashboard_url = "https://api.huoban.com/v2/dashboard/{}"
 widget_url = "https://api.huoban.com/paasapi/dashboard/{}/get_widget_value"
@@ -99,15 +99,15 @@ def request_widget_list(dashboard_list):
 def check_data(widgets_class_list):
     """遍历 widget对象列表，请求两个分支的返回值，并进行比较，返回值不一致的 写入 txt文件中"""
 
-    with open(r'./widgets_class_list.pkl', 'rb') as f:
-        # pickle.dump(widgets_class_list, f)
+    with open(r'widgets_4000000003433456_list.pkl', 'wb') as f:
+        pickle.dump(widgets_class_list, f)
 
-        widgets_class_list = pickle.load(f)
+        # widgets_class_list = pickle.load(f)
     with open(r'./check.txt', 'w') as f:
         for widget in widgets_class_list:
             try:
-                widget_old = requests.post(url=widget.get_widget_url(), headers=header,json=widget.get_widget_data(),proxies=proxies).json()
-                widget_new = requests.post(url=widget.get_widget_url(), headers=test05_header,json=widget.get_widget_data(),proxies=proxies).json()
+                widget_old = requests.post(url=widget.get_widget_url(), headers=header,json=widget.get_widget_data()).json()
+                widget_new = requests.post(url=widget.get_widget_url(), headers=header,json=widget.get_widget_data(),proxies=proxies).json()
             except:
                 print("失败：",widget.dashboard_name, widget.widget_id, widget.widget_name)
             else:
@@ -142,6 +142,6 @@ def check_data(widgets_class_list):
 
 
 if __name__ == '__main__':
-    # check_data(request_widget_list(request_dashboard(4000000002948220)))
-    check_data([])
+    check_data(request_widget_list(request_dashboard(4000000003433456)))
+    # check_data([])
     pass
