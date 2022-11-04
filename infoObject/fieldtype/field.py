@@ -41,14 +41,24 @@ class NumberField(BaseNumField, RandomField):
     """数值"""
 
     def get_random_value(self):
-        return int_parameter()
+        if self.precision is None or self.precision == "":
+            precision = config.precision
+        else:
+            precision = int(self.precision)
+
+        return flot_parameter(precision=precision)
 
 
 class PercentField(BaseNumField, RandomField):
     """百分比"""
 
     def get_random_value(self):
-        return flot_parameter()
+        if self.precision is None or self.precision == "":
+            precision = config.precision
+        else:
+            precision = int(self.precision)
+
+        return flot_parameter(precision=precision)
 
 
 class MoneyField(BaseNumField, RandomField):
@@ -62,14 +72,14 @@ class DateField(BaseDateField, RandomField):
     """日期字段"""
 
     def get_random_value(self):
-        return date_parameter("2022-01-01", "2022-10-31")
+        return date_parameter()
 
 
 class DateTimeField(BaseDateField, RandomField):
     """日期和时间字段"""
 
     def get_random_value(self):
-        return date_time_parameter("2022-01-01", "2022-10-31")
+        return date_time_parameter()
 
 
 class CalculationNumber(BaseCalculationField, BaseNumField):
@@ -122,7 +132,7 @@ class UserFiled(BaseUserField, RandomField):
     """成员字段"""
     def get_random_value(self):
         user_list = self._get_user_list()
-        if user_list:
+        if user_list and config.local != "local":
             """缩小一下 成员可选的范围"""
             user_list = [user for user in user_list if user.get('name') in ('侯真杰', '孙长子', '朱鲁迪', '宋培琳', '孙先菊')]
         if user_list:

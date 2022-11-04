@@ -12,14 +12,23 @@ from common.analysis import CulParse
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 
-headers_config = {
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.55 Safari/537.36 Edg/96.0.1054.43',
-    'authority': 'api.huoban.com', 'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
-    'origin': 'https://app.huoban.com', 'pragma': 'no-cache', 'referer': 'https://app.huoban.com/',
-    'sec-ch-ua': '"Chromium";v="104", " Not A;Brand";v="99", "Microsoft Edge";v="104"', 'sec-ch-ua-mobile': '?0',
-    'sec-ch-ua-platform': '"Windows"', 'sec-fetch-dest': 'empty', 'sec-fetch-mode': 'cors',
-    'sec-fetch-site': 'same-site', 'x-huoban-monitor-tag': 'item_list',
-}
+headers_config = {'authority': 'api.huoban.com',
+                  'accept': 'application/json, text/plain, */*',
+                  'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+                  'cache-control': 'no-cache','origin': 'https://app.huoban.com',
+                  'pragma': 'no-cache',
+                  'referer': 'https://app.huoban.com/',
+                  'sec-ch-ua': '"Chromium";v="104", " Not A;Brand";v="99", "Microsoft Edge";v="104"',
+                  'sec-ch-ua-mobile': '?0',
+                  'sec-ch-ua-platform': '"Windows"',
+                  'sec-fetch-dest': 'empty',
+                  'sec-fetch-mode': 'cors',
+                  'sec-fetch-site': 'same-site',
+                  'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.55 Safari/537.36 Edg/96.0.1054.43',
+                  'x-huoban-client-id': '1',
+                  'x-huoban-request-id': 'e05046cdc042798fbc983545910055e9',
+                  'x-huoban-security-token': ''}
+
 
 class SendRequest(object):
     def __init__(self, cur_bash=None):
@@ -76,17 +85,14 @@ class SimplePort():
         self.access_token = None
         self.__login()
         self.__set_login_authorization()
-        self.__set_cookie_dev()
+        if config.local == "dev":
+            self.__set_cookie_dev()
 
     def _get_login_data(self):
-        if config.local == "dev":
-            user = config.dev_user
-        else:
-            user = config.pre_user
 
         return {
-            "username": user['username'],
-            "password": user['pwd'],
+            "username": config.user['username'],
+            "password": config.user['pwd'],
             "grant_type": "password",
             "client_id": 1
         }
@@ -99,6 +105,7 @@ class SimplePort():
         """添加请求头并设置 authorization 认证信息"""
         self.session.headers.update(headers_config)
         self.session.headers.update({'authorization':self.access_token})
+        # self.session.headers.update({'authorization':"Bearer uPe4QoWSg4Ul7upJZjnt7z7d23eGWJSpTA5Ol1Es001"})
 
 
     def __login(self):
@@ -106,7 +113,6 @@ class SimplePort():
         modules_path = r"D:\Application\DevelopmentTool\node\node_global\node_modules\crypto-js"
         login_url = config.after_base_url + "/paasapi/login"
         access_token = self.sendRequest("post", login_url, data=self._get_login_data())
-        print(access_token)
         # 判断登录是否成功
         if access_token.get('access_token'):
             access_token = access_token['access_token']
@@ -121,11 +127,13 @@ class SimplePort():
         ctx = execjs.compile(js)
         result = ctx.call('get_token', token, modules_path)
         self.access_token = "Bearer " + result
+        # self.access_token = "Bearer IqtOcdVjOAnIE2yDj5Bib7FvQ2sUqGoi4rrvRuFM001"
 
 
 
 
     def sendRequest(self, method, url, headers=None, data=None):
+
         # self.__set_cookie_dev()
         # if not headers:
         #     # 若没有传header，自行拼接 authorization 认证信息

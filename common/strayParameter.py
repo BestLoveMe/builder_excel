@@ -28,6 +28,7 @@ def date_time_this_month_range():
     """返回当前月的 第一天和最后一天 的datetime"""
     tody = datetime.datetime.today()
     date_start = datetime.datetime(year=tody.year, month=tody.month, day=1)
+    date_start = date_start - datetime.timedelta(weeks=5)
     date_end = datetime.datetime(year=tody.year, month=tody.month, day=calendar.monthrange(tody.year, tody.month)[1])
     return date_start, date_end
 
