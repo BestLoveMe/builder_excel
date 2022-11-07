@@ -1,8 +1,18 @@
 import pandas as pd
 from collections import defaultdict
+
+import config
 from infoObject.table import Table
 import xlwings as xw
 from common.strayParameter import now_unix_time
+
+def total(func):
+    def total_time(*args, **kwargs):
+        start_time = timer()
+        func(*args, **kwargs)
+        end_tiem = timer() - start_time
+        print(end_tiem)
+    return total_time
 
 
 def to_csv(row):
@@ -17,9 +27,9 @@ def to_csv(row):
 
     df.to_csv(r'./data.csv')
 
-
-def toxls(row):
-    table = Table(2100000019536050)
+@total
+def toxls(table_id, row):
+    table = Table(table_id)
     fields_list = list(table.get_writer_fields_list())
     name = [field.getName() for field in fields_list]
     app = xw.App(visible=False, add_book=False)
@@ -34,11 +44,11 @@ def toxls(row):
         # 纵向写入数据
         sheet.range((2, index + 1)).options(transpose=True).value = [field.get_random_value() for _ in range(row)]
 
-    wb.save(r'./{}-{}.xlsx'.format(table.table_id, now_unix_time()))
+    wb.save(config.FILE_DIR+ r'\{}-{}.xlsx'.format(table.name, now_unix_time()))
     wb.close()
     app.quit()
 
-
+@total
 def toxlsx2(table_id, row):
     table = Table(table_id=table_id)
     fields_list = list(table.get_writer_fields_list())
@@ -62,7 +72,7 @@ def toxlsx2(table_id, row):
     sheet = wb.sheets.active
     sheet.range('A1').value = da
 
-    wb.save(r'F:\builder_excel\file\{}-{}.xlsx'.format(table.name, now_unix_time()))
+    wb.save(config.FILE_DIR+r'\{}-{}.xlsx'.format(table.name, now_unix_time()))
     wb.close()
     app.quit()
 
@@ -72,13 +82,7 @@ import time
 timer = time.time
 
 
-def total_time(func, *args, **kwargs):
-    start_time = timer()
-    func(*args, **kwargs)
-    end_tiem = timer() - start_time
-    print(end_tiem)
-
-
 if __name__ == '__main__':
     # to_csv(10)
-    total_time(toxlsx2, 2100000001000050, 500)
+    toxls(2100000001000050, 10000)
+    """6.284190654754639"""

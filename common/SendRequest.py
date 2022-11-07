@@ -4,6 +4,7 @@ import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 from requests.models import Response
 import execjs
+import shelve
 
 import config
 from common.analysis import CulParse
@@ -40,25 +41,15 @@ class SendRequest(object):
         self.request = requests
         self.p = None
 
+
         # if cur_bash is not None:
         #     self.sendMethod()
 
     def sendMethod(self):
         # 从requests模块中获取 请求方法； 判断若获取到方法则 执行
-        request = getattr(requests, self.method)
+        request = getattr(self.request, self.method)
         if request:
             self.p = request(url=self.url, headers=self.header, json=self.data, verify=False)
-        # if self.method == "GET":
-        # self.p = requests.get(url=self.url, headers=self.header,verify=False)
-        # elif self.method == "POST":
-        #     p = requests.post(url=self.url, headers=self.header,json=self.data, verify=False)
-        # elif self.method == "OPTIONS":
-        #     p = requests.options(url=self.url, headers=self.header, verify=False)
-        # elif self.method == "PUT":
-        #     p = requests.put(url=self.url, headers=self.header, data=self.data, verify=False)
-        # else:
-        #     p = None
-        # self.p = p
         return self.p
 
     def getResponseJson(self, row=None):
@@ -84,9 +75,12 @@ class SimplePort():
         self.session = requests.Session()
         self.access_token = None
         self.__login()
-        self.__set_login_authorization()
+
         if config.local == "dev":
             self.__set_cookie_dev()
+
+        self.retry = False
+        self.__set_login_authorization()
 
     def _get_login_data(self):
 
@@ -119,7 +113,7 @@ class SimplePort():
         else:
             print("用户名或密码错误")
             raise AttributeError
-        with open(r"F:\builder_excel\api\get_authorization.js", 'r', encoding="utf-8") as f:
+        with open(config.API_DIR + r"\get_authorization.js", 'r', encoding="utf-8") as f:
             js = f.read()
 
         token = base64.b64decode(access_token).decode()
@@ -127,19 +121,11 @@ class SimplePort():
         ctx = execjs.compile(js)
         result = ctx.call('get_token', token, modules_path)
         self.access_token = "Bearer " + result
-        # self.access_token = "Bearer IqtOcdVjOAnIE2yDj5Bib7FvQ2sUqGoi4rrvRuFM001"
-
 
 
 
     def sendRequest(self, method, url, headers=None, data=None):
-
-        # self.__set_cookie_dev()
-        # if not headers:
-        #     # 若没有传header，自行拼接 authorization 认证信息
-        #     headers = headers_config
-        #     headers['authorization'] = config.authorization
-        # print("发送请求--", url)
+        # 发送请求
         request = getattr(self.session, method.lower())
         if not request:
             raise PermissionError("{} 请求方法错误".format(method))
@@ -161,7 +147,7 @@ class SimplePort():
     def sendRow(self, row):
         r = SendRequest(cur_bash=row)
         r.request = self.session
-        return self._getResponseJson(r.sendMethod())
+        return r.getResponseJson()
 
 
 sendRequest = SimplePort()
@@ -190,11 +176,11 @@ if __name__ == '__main__':
   -H 'x-huoban-sensors: %7B%22visit_type%22%3A%22%E5%86%85%E9%83%A8%E7%B3%BB%E7%BB%9F%22%2C%22client_id%22%3A%221%22%2C%22platform_type%22%3A%22Web%E6%B5%8F%E8%A7%88%E5%99%A8%22%2C%22client_version%22%3A%22v4%22%2C%22is_register%22%3Atrue%2C%22env%22%3A%22prod%22%2C%22_distinct_id%22%3A%223232861%22%2C%22application_url%22%3A%22https%3A%2F%2Fapp.huoban.com%2Ftables%2F2100000021121962%3FviewId%3D0%22%2C%22company_id%22%3A%225100000000001643%22%2C%22space_id%22%3A%224000000003745256%22%7D' \
   --compressed"""
 
-    url = "https://www.baidu.com"
-    method = 'GET'
-    sendRequest.sendRequest(method, url)
-    print(sendRequest.session.headers)
-    print(sendRequest.session.cookies)
-    # print(sendRequest.sendRow(row))
+    # url = "https://www.baidu.com"
+    # method = 'GET'
+    # sendRequest.sendRequest(method, url)
+    # print(sendRequest.session.headers)
+    # print(sendRequest.session.cookies)
+    print(sendRequest.sendRow(row))
 
     # sendRequest.login()
