@@ -30,9 +30,9 @@ def compareObj(objA, objB, flag):
     else:
         pass
 
-import xlwings as xw
-
-app = xw.App(visible=False, add_book=False)
-app.display_alerts = False  # 警告关闭
-app.screen_updating = False  # 屏幕更新关闭
+# import xlwings as xw
+#
+# app = xw.App(visible=False, add_book=False)
+# app.display_alerts = False  # 警告关闭
+# app.screen_updating = False  # 屏幕更新关闭
 
