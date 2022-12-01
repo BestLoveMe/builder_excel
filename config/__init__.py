@@ -13,7 +13,8 @@ local = 'local'
 def __getattr__(name):
     return 'config'
 
-
+def __getattribute__(item):
+    return "__getattribute__"
 
 from config.parameter_config import *
 from config.url_config import *
