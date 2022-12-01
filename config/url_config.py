@@ -8,18 +8,14 @@ login_url = "https://api.huoban.com/paasapi/login"
 
 dev_after_base_url = "https://api.huobandev.com"
 pre_after_base_url = "https://api.huoban.com"
-local_after_base_url = "https://api.huobanim.com"
+local_after_base_url = "https://api.p01.jiukyun.com"
 
 
 hb_dev_host = "test05"
-
-
-
-
 
 
 pre_user = {"username":"a@huoban.com", "pwd":"1234qwer"}
 
 dev_user = {"username":"a@huobandev.com", "pwd":"1234qwer"}
 
-local_user = {"username":"15901516362","pwd":"123456qwert"}
+local_user = {"username":"admin@huoban.com","pwd":"wa3sCP7U4H90d!38"}

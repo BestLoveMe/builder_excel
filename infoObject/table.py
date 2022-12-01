@@ -1,8 +1,10 @@
+import config
 from infoObject.fieldFunction import FieldFunction
-
+import collections
 
 from connectorConfig.port import TableConfig
 from infoObject.fieldtype.basefield import RandomField
+from common.SendRequest import sendRequest
 
 class Table(object):
     def __init__(self, table_id):
@@ -17,6 +19,7 @@ class Table(object):
         self.name = None
 
         self.tableConfig = TableConfig(self.table_id).getConfig()
+        self.table_config = self.__get_table_config()
 
         self.init_parse()
 
@@ -47,6 +50,34 @@ class Table(object):
     def get_writer_fields_list(self):
         """返回可以生成随机数的字段列表"""
         return (field for field in self.get_fields_list() if isinstance(field, RandomField) and not field.attach_relation_field)
+
+    def __get_table_config(self):
+        config_url = config.after_base_url + r"/paas/view/navigation/configs?table_id={}".format(self.table_id)
+        return sendRequest.sendRequest('get', config_url)
+
+    def get_table_views(self):
+        def get_gourp_view(group):
+            return group.get('children')
+        views = collections.defaultdict(list)
+        view_config_groups = self.table_config.get("view_config_groups")
+        for views_group in view_config_groups:
+            if views_group.get("scope") == "private":
+                private_children = views_group.get("children")
+                if private_children.get("type") == "group":
+                    views["private"].extend(get_gourp_view(private_children))
+                else:
+                    views["private"].append(private_children)
+            else:
+                public_children = views_group.get("children")
+                if public_children.get("type") == "group":
+                    views["public"].extend(get_gourp_view(public_children))
+                else:
+                    views["public"].append(public_children)
+        return views
+
+    def delete_views(self):
+        views = self.get_table_views()
+        view_ids = []
 
 
 if __name__ == '__main__':

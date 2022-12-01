@@ -141,7 +141,16 @@ class SimplePort():
             if response.headers.get("content-type") == "application/json":
                 return response.json()
             else:
-                return response.text
+                d = response.text
+                try:
+                    response.json()
+                except Exception as e:
+                    pass
+                else:
+                    d = response.json()
+                finally:
+                    return d
+
         return response
 
     def sendRow(self, row):

@@ -15,8 +15,12 @@ class FieldFunction():
         text_map = {"input":InputTextField,
                     "textarea":TextareaTextField,
                     "rich":RichTextField,
+                    "number":NumberTextField,
+                    "barcode":BarcodeTextField
                     }
-        field_type = configuration.get('config').get('type')
+        field_type = configuration.get('config').get('sub_type')
+        if field_type is None:
+            field_type = configuration.get('config').get('type')
         return FieldFunction.map_func(text_map, field_type, configuration)
 
     @staticmethod

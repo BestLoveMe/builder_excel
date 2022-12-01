@@ -9,9 +9,3 @@ end_int = 200
 
 # 随机数的保留小数位
 precision = 3
-
-
-
-"https://api.huobandev.com/paasapi/table/2100000013856938"
-
-"https://api.huobandev.com/paasapi/item/field/2200000135030284/search_relation"

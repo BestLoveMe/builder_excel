@@ -35,4 +35,12 @@ def compareObj(objA, objB, flag):
 # app = xw.App(visible=False, add_book=False)
 # app.display_alerts = False  # 警告关闭
 # app.screen_updating = False  # 屏幕更新关闭
-
+if __name__ == '__main__':
+    try:
+        raise TypeError
+    except Exception as e:
+        print("shibai")
+    else:
+        print("exle")
+    finally:
+        print("finally")

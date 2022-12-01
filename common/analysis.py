@@ -103,27 +103,29 @@ class CulParse(object):
 
 if __name__ == '__main__':
 
-    row = """curl 'https://devpress-api.csdn.net/api/internal/blog/nsInfo/blog/119924047' \
-  -H 'authority: devpress-api.csdn.net' \
-  -H 'accept: */*' \
-  -H 'accept-language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6' \
-  -H 'cache-control: no-cache' \
-  -H 'cookie: uuid_tt_dd=10_20293514760-1632185922881-928531; Hm_ct_6bcd52f51e9b3dce32bec4a3997715ac=6525*1*10_20293514760-1632185922881-928531; Hm_up_6bcd52f51e9b3dce32bec4a3997715ac=%7B%22islogin%22%3A%7B%22value%22%3A%220%22%2C%22scope%22%3A1%7D%2C%22isonline%22%3A%7B%22value%22%3A%220%22%2C%22scope%22%3A1%7D%2C%22isvip%22%3A%7B%22value%22%3A%220%22%2C%22scope%22%3A1%7D%7D; c_dl_um=-; __gads=ID=e9bca87849074c41-22297f9779d700bd:T=1666539870:RT=1666539870:S=ALNI_MbwsbbWbKRii0sGP8lNpZ_IRRAyxg; __bid_n=18414f668492e9c71f4207; c_dl_prid=1664855552133_570253; c_dl_rid=1667020665951_564205; c_dl_fref=https://blog.csdn.net/csdncheng123/article/details/88294316; c_dl_fpage=/download/weixin_38668672/12855208; c_segment=3; Hm_lvt_6bcd52f51e9b3dce32bec4a3997715ac=1667569325,1667622886,1667831485,1668225685; dc_sid=91bb73f862032052895ba5e66bbbf3c9; hide_login=1; __gpi=UID=0000059c972a0129:T=1653098673:RT=1668225684:S=ALNI_MapqbhfXH4BbyB0Ix7tzZLGgGg4NA; unlogin_scroll_step=1668225689164; SESSION=475b411b-4c6b-4867-8139-5b93ea5f5481; ssxmod_itna=iqjx2i0=dYqqz=QNexGwqWuPmTIqQuT9mxDsKONDSxGKidDqxBnuMGPDQNQgQOgjm0eirVYmqcGxopmQTNToy=x0aDbqGkGGGBxGGIxBYDQxAYDGDDpODj4ibDYSZHDjG96CSAPqAQDKx0kDY5Dwc58DYPDWxDFAcqbAPyaq9HhDi5Y2OGxAxG1DQ5Dsp2AgGKD0rfEgCHCk9oDE7+7xKYDvxDkY/FFP4GdLpyCsodNq74qql0tQ72YAD+xF0xTGiDuG0hxBm0PgW+x/mqx5QtP=vztDDPifkGDD; ssxmod_itna2=iqjx2i0=dYqqz=QNexGwqWuPmTIqQuTIxikpKFGDl2iiDj+qYC3dDQ0D6QWuj87HNqqFrT5=qj7jdT6pMbFlBiFWsUREU7KBm6oQdLjjwddRSbWLASn7kHZdXcRwuEQFqg9bHVtR3xnzfP7keFWNlPBaec+igxFGxheFQrOwTIetNKBzbgAttPAp8URzxcBzQcgtAFnE7E8praTKLmBfVi3FQFnUjzodT3SLCUEtLR4RM0eqoj4pd5BRgQ6pUF4Dw1u3DjKD+1wDD===; dc_session_id=10_1668231532733.768943; firstDie=1; log_Id_click=126; c_pref=default; c_ref=default; c_first_ref=default; log_Id_view=1090; c_first_page=https%3A//blog.csdn.net/m0_43609475/article/details/119924047; c_dsid=11_1668233314144.357102; c_page_id=default; dc_tos=rl812a; log_Id_pv=265; Hm_lpvt_6bcd52f51e9b3dce32bec4a3997715ac=1668233315' \
-  -H 'origin: https://blog.csdn.net' \
-  -H 'pragma: no-cache' \
-  -H 'referer: https://blog.csdn.net/m0_43609475/article/details/119924047' \
-  -H 'sec-ch-ua: ".Not/A)Brand";v="99", "Microsoft Edge";v="103", "Chromium";v="103"' \
-  -H 'sec-ch-ua-mobile: ?0' \
-  -H 'sec-ch-ua-platform: "Windows"' \
-  -H 'sec-fetch-dest: empty' \
-  -H 'sec-fetch-mode: cors' \
-  -H 'sec-fetch-site: same-site' \
-  -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36 Edg/103.0.1264.62' \
+    row = """curl 'https://api.huobandev.com/v2/preference/table/2100000014467191' \
+  -H 'Connection: keep-alive' \
+  -H 'Pragma: no-cache' \
+  -H 'Cache-Control: no-cache' \
+  -H 'Accept: application/json' \
+  -H 'X-Huoban-Request-Id: b150fdbaa7df80f958e7753a5f1412b2' \
+  -H 'Authorization: Bearer 5kRW6YRQ2rOFGb0j7SdutQX3pFwMp8spd9ZizGgO001' \
+  -H 'X-Huoban-Monitor-Tag: item_list' \
+  -H 'X-Huoban-Client-Id: 1' \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36' \
+  -H 'X-Huoban-Sensors: %7B%22visit_type%22%3A%22%E5%86%85%E9%83%A8%E7%B3%BB%E7%BB%9F%22%2C%22client_id%22%3A%221%22%2C%22platform_type%22%3A%22Web%E6%B5%8F%E8%A7%88%E5%99%A8%22%2C%22client_version%22%3A%22v4%22%2C%22is_register%22%3Atrue%2C%22env%22%3A%22dev%22%2C%22_distinct_id%22%3A%221369930%22%2C%22application_url%22%3A%22https%3A%2F%2Fapp-06.huobandev.com%2Ftables%2F2100000014467191%3FviewId%3D3500000023666425%22%7D' \
+  -H 'Origin: https://app-06.huobandev.com' \
+  -H 'Sec-Fetch-Site: same-site' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Referer: https://app-06.huobandev.com/tables/2100000014467191?viewId=3500000023666425' \
+  -H 'Accept-Language: zh-CN,zh;q=0.9' \
+  -H 'Cookie: sensorsdata2015jssdkcross=%7B%22distinct_id%22%3A%221369930%22%2C%22first_id%22%3A%221847f511fb5acd-061c5fcc4ef12e4-3e604809-1327104-1847f511fb896b%22%2C%22props%22%3A%7B%22%24latest_traffic_source_type%22%3A%22%E7%9B%B4%E6%8E%A5%E6%B5%81%E9%87%8F%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC_%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80%22%2C%22%24latest_referrer%22%3A%22%22%7D%2C%22identities%22%3A%22eyIkaWRlbnRpdHlfbG9naW5faWQiOiIxMzY5OTMwIiwiJGlkZW50aXR5X2Nvb2tpZV9pZCI6IjE4NDdmNTExZmI1YWNkLTA2MWM1ZmNjNGVmMTJlNC0zZTYwNDgwOS0xMzI3MTA0LTE4NDdmNTExZmI4OTZiIn0%3D%22%2C%22history_login_id%22%3A%7B%22name%22%3A%22%24identity_login_id%22%2C%22value%22%3A%221369930%22%7D%2C%22%24device_id%22%3A%221847f511fb5acd-061c5fcc4ef12e4-3e604809-1327104-1847f511fb896b%22%7D; user_id=1369930; hb_dev_host=test07; access_token=5kRW6YRQ2rOFGb0j7SdutQX3pFwMp8spd9ZizGgO001' \
   --compressed"""
     parse = CulParse(row)
     # parse.culParse(row)
 
-    print(parse.getUrl())
+    # print(parse.getUrl())
     print(parse.getHeader())
-    print(parse.getMethod())
-    print(parse.getData())
+    # print(parse.getMethod())
+    # print(parse.getData())
