@@ -8,7 +8,7 @@ import json
 
 
 class Config():
-    def __init__(self, env=None, ):
+    def __init__(self, env=None):
         self.config = configparser.ConfigParser()
         self.config.read('config.ini', encoding='UTF-8')
         self.section = 'PRE'
