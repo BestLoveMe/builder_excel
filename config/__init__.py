@@ -1,31 +1,39 @@
 # 配置文件
 
-from .path import *
 
-
-# local = "dev"
-# local = "pre"
-local = 'local'
-
-
-
-
-def __getattr__(name):
-    return 'config'
-
+from config.ConfigParser import ConfigParser
+from config.path import *
 from config.parameter_config import *
-from config.url_config import *
-
-if local == "dev":
-    after_base_url = dev_after_base_url
-    user = dev_user
-elif local == "pre":
-    after_base_url = pre_after_base_url
-    user = pre_user
-elif local == "local":
-    after_base_url = local_after_base_url
-    user = local_user
 
 
 
+class Config():
+    def __init__(self):
+        self.config = ConfigParser()
+        self.local_env = "PRE"
 
+    def set_enviroment(self, env:str):
+        self.local_env = env.upper()
+        self.config.set_env(env)
+
+    @property
+    def after_base_url(self):
+        return self.config.get_env_option("base_api_url")
+
+    @property
+    def user(self):
+        return self.config.get_env_dict_optin("user")
+
+    @property
+    def hb_dev_host(self):
+        return "test05"
+
+    @property
+    def local(self):
+        return self.local_env
+
+
+configObject = Config()
+
+if __name__ == '__main__':
+    print(configObject.after_base_url)

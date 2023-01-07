@@ -236,7 +236,7 @@ class BaseUserField(BaseField):
     def _get_user_list(self):
         """返回 用户字段 请求的 sear_user 列表"""
         if not BaseUserField.__user_dict.get(self.field_id):
-            url = config.after_base_url + '/paas/hbdata/field/{}/search_user'.format(self.field_id)
+            url = config.configObject.after_base_url + '/paas/hbdata/field/{}/search_user'.format(self.field_id)
             data = {"text":"","offset":0,"limit":50,"table_id":self.table_id}
             user_list = None
             try:

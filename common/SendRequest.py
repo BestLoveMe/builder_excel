@@ -7,6 +7,7 @@ import execjs
 import shelve
 
 import config
+from config import configObject
 from common.analysis import CulParse
 
 # 取消 https 证书验证 的警告信息
@@ -81,7 +82,7 @@ class SimplePort():
         self.access_token = None
         self.__login()
 
-        if config.local == "dev":
+        if configObject.local == "dev":
             self.__set_cookie_dev()
 
         self.retry = False
@@ -90,15 +91,15 @@ class SimplePort():
     def _get_login_data(self):
 
         return {
-            "username": config.user['username'],
-            "password": config.user['pwd'],
+            "username": configObject.user['username'],
+            "password": configObject.user['pwd'],
             "grant_type": "password",
             "client_id": 1
         }
     def __set_cookie_dev(self):
         """cookie中设置dev环境中的 后端分支参数hb_dev_host"""
         cookie = self.session.cookies
-        cookie.set("hb_dev_host", config.hb_dev_host)
+        cookie.set("hb_dev_host", configObject.hb_dev_host)
 
     def __set_login_authorization(self):
         """添加请求头并设置 authorization 认证信息"""
@@ -109,8 +110,9 @@ class SimplePort():
 
     def __login(self):
         """登录，获取 authorization"""
-        modules_path = r"D:\Application\DevelopmentTool\node\node_global\node_modules\crypto-js"
-        login_url = config.after_base_url + "/paasapi/login"
+        # modules_path = r"D:\Application\DevelopmentTool\node\node_global\node_modules\crypto-js"
+        modules_path = r"D:\Compile\node\node_global\node_modules\crypto-js"
+        login_url = configObject.after_base_url + "/paasapi/login"
         access_token = self.sendRequest("post", login_url, data=self._get_login_data())
         # 判断登录是否成功
         if access_token.get('access_token'):

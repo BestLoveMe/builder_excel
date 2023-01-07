@@ -1,6 +1,6 @@
 
 from common.SendRequest import sendRequest
-import config
+from config import configObject
 
 
 
@@ -11,7 +11,7 @@ class TableConfig():
     def __init__(self, table_id):
         self.method = 'get'
         self.table_id = table_id
-        self.url = config.after_base_url+'/paasapi/table/{}'.format(self.table_id)
+        self.url = configObject.after_base_url+'/paasapi/table/{}'.format(self.table_id)
 
         self.__config = None
 
@@ -28,7 +28,7 @@ class TableConfig():
 
 class ItemList(object):
     def __init__(self, table_id):
-        self.url = config.after_base_url+ '/paas/hbdata/item/item_list'
+        self.url = configObject.after_base_url + '/paas/hbdata/item/item_list'
         self.data = {"offset":0,"limit":10000,"permission_id":0,"filter":{},"search":{},"order_by":[],"search_connector":"or","mode":"Client","table_id":table_id,"resource_view_type":"table"}
         self.methon = 'post'
         self.__item_list_json = None
@@ -52,6 +52,3 @@ class ItemList(object):
 
 if __name__ == '__main__':
     table = ItemList(2100000019084101)
-    print(table.get_item_list_json())
-    print(table.get_item_list_items())
-    print(table.get_item_list_mappings())

@@ -19,7 +19,7 @@ class Table(object):
         self.name = None
 
         self.tableConfig = TableConfig(self.table_id).getConfig()
-        self.table_config = self.__get_table_config()
+        # self.table_config = self.__get_table_view_navigation_config()
 
         self.init_parse()
 
@@ -51,11 +51,17 @@ class Table(object):
         """返回可以生成随机数的字段列表"""
         return (field for field in self.get_fields_list() if isinstance(field, RandomField) and not field.attach_relation_field)
 
-    def __get_table_config(self):
-        config_url = config.after_base_url + r"/paas/view/navigation/configs?table_id={}".format(self.table_id)
+    def __get_table_view_navigation_config(self):
+        """
+        请求获取 表格视图的 config
+        """
+        config_url = config.configObject.after_base_url + r"/paas/view/navigation/configs?table_id={}".format(self.table_id)
         return sendRequest.sendRequest('get', config_url)
 
     def get_table_views(self):
+        """
+        获取表格的 视图
+        """
         def get_gourp_view(group):
             return group.get('children')
         views = collections.defaultdict(list)
@@ -82,9 +88,7 @@ class Table(object):
 
 if __name__ == '__main__':
     table = Table(2100000020573043)
-    for field in table.fields_list:
-        if isinstance(field, RandomField):
-            print()
+    print(table.tableConfig)
 
 
 

@@ -14,3 +14,5 @@ FILE_DIR = os.path.join(BASE_DIR, 'file')
 API_DIR = os.path.join(BASE_DIR, 'api')
 
 SHELVE_DIR = os.path.join(BASE_DIR, 'shelve_dir')
+
+CONFIG_INI_FILE_PATH = os.path.join(BASE_DIR, 'config', 'config.ini')
